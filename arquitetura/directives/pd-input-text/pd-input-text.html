@@ -1,11 +1,12 @@
 <div ng-class="classColspan">
     <div class="form-group">
-        <label class="control-label" for="{{idInputText}}" ng-bind="label"></label>
+        <label class="control-label" for="{{idInputText}}" ng-bind="label" ng-if="label"></label>
 
         <input type="{{type}}"
                class="form-control"
                ng-model="ngModel"
                id="{{idInputText}}"
-               placeholder="{{placeholder}}"/>
+               placeholder="{{placeholder}}"
+               ui-mask="{{mask}}"/>
     </div>
 </div>

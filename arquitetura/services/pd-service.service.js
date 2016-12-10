@@ -5,101 +5,146 @@
         .module('pdApp')
         .service('pdService', pdService);
 
-    pdService.$inject = ['$http', '$q', 'AlertService'];
+    pdService.$inject = ['AlertService', 'localStorageService', '$state'];
 
     /* @ngInject */
-    function pdService($http, $q, AlertService) {
-        return function(prefixKey){
+    function pdService(AlertService, localStorageService, $state) {
+        return function(nomeLista){
             var self = this;
 
-            self.prefixKey = prefixKey;
+            self.nomeLista = nomeLista;
 
             self.salvar = salvar;
             self.limpar = limpar;
             self.excluir = excluir;
+            self.listar = listar;
+            self.get = get;
 
             self.onAntesSalvar = onAntesSalvar;
             self.onAntesExcluir = onAntesExcluir;
             self.onSalvarResult = onSalvarResult;
-            self.onSalvarFault = onSalvarFault;
-            self.onSalvarResult = onSalvarResult;
-            self.onExcluirFault = onExcluirFault;
+            self.onExcluirResult = onExcluirResult;
 
-            self.metodoSalvar = 'salvar';
-            self.metodoExcluir = 'excluir';
             self.entidade = {};
 
             self.rotaPesquisar = "";
             self.rotaCadastrar = "";
 
+            initApplication();
+
             function salvar(){
                 var isSalvar = self.onAntesSalvar();
 
                 if(isSalvar === false) {
-                    return $q.reject();
+                    return;
                 }
 
-                var deferred = $q.defer();
-
-                $http.post('/rest/' + self.controller + '/' + self.metodoSalvar, self.entidade).then(resultSalvar, faultSalvar);
-
-                function resultSalvar(response){
-                    AlertService.success('Registro salvo com sucesso!');
-
-                    deferred.resolve(response);
-
-                    onSalvarResult();
+                if(self.entidade.id){
+                    merge()
+                }else{
+                    insert();
                 }
 
-                function faultSalvar(rejection){
-                    AlertService.error('Falha ao salvar o registro, causa:' + rejection.message);
+                $state.go(self.rotaPesquisar);
 
-                    deferred.reject(rejection);
+                AlertService.success('Registro salvo com sucesso!');
 
-                    onSalvarFault();
-                }
-
+                onSalvarResult();
             }
 
-            function excluir(){
+            function insert(){
+                setIdEntidade();
+
+                var lista = localStorageService.get(self.nomeLista);
+
+                if(!lista)
+                    lista = [];
+
+                lista.push(self.entidade);
+                localStorageService.set(self.nomeLista, lista);
+            }
+
+            function merge(){
+                var lista = localStorageService.get(self.nomeLista);
+
+                for(var i = lista.length - 1; i >= 0; i--){
+                    if(lista[i].id === self.entidade.id){
+                        lista[i] = angular.copy(self.entidade);
+                        break;
+                    }
+                }
+
+                localStorageService.set(self.nomeLista, lista);
+            }
+
+            function excluir(id){
                 var isExcluir = self.onAntesExcluir();
 
                 if(isExcluir === false) {
-                    return $q.reject();
+                    return;
                 }
 
-                var deferred = $q.defer();
+                var lista = localStorageService.get(self.nomeLista);
 
-                $http.delete('/rest/' + self.controller + '/' + self.metodoExcluir + '/' + self.entidade.id).then(resultExcluir, faultExcluir);
-
-                function resultExcluir(response){
-                    AlertService.success('Registro excluido com sucesso!');
-
-                    deferred.resolve(response);
-
-                    onExcluirResult();
+                for(var i = lista.length - 1; i >= 0; i--){
+                    if(lista[i].id === id){
+                        lista.splice(i, 1);
+                        break;
+                    }
                 }
 
-                function faultExcluir(rejection){
-                    AlertService.error('Falha ao excluir o registro, causa:' + rejection.message);
+                localStorageService.set(self.nomeLista, lista);
 
-                    deferred.reject(rejection);
+                AlertService.success('Registro excluido com sucesso!');
 
-                    onExcluirFault();
-                }
+                onExcluirResult();
+            }
 
+            function listar(){
+                return localStorageService.get(self.nomeLista);
             }
 
             function limpar(){
                 self.entidade = {};
             }
 
+            function initApplication(){
+                var idSequence = localStorageService.get("idSequence");
+
+                if(!idSequence){
+                    localStorageService.set("idSequence", 1);
+                }
+            }
+
+            function setIdEntidade(){
+                var idSequence = localStorageService.get("idSequence");
+
+                idSequence++;
+
+                self.entidade.id = idSequence;
+
+                localStorageService.set("idSequence", idSequence);
+            }
+
+            function get(id){
+                var entidade = null;
+
+                var lista = localStorageService.get(self.nomeLista);
+
+                for(var i = lista.length - 1; i >= 0; i--){
+                    if(lista[i].id === id){
+                        entidade = angular.copy(lista[i]);
+                        break;
+                    }
+                }
+
+                return entidade;
+            }
+
             function onAntesSalvar(){ return true; }
             function onAntesExcluir(){ return true; }
             function onSalvarResult() {}
-            function onSalvarFault() {}
             function onExcluirResult() {}
-            function onExcluirFault() {}
 
         }
     }

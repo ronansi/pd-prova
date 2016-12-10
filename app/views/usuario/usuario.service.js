@@ -10,7 +10,7 @@
     function UsuarioService(pdService) {
 
         this.getService = function(){
-            var service = new pdService('usuario');
+            var service = new pdService('usuarios');
 
             service.rotaPesquisar = 'pesquisaUsuario';
             service.rotaCadastrar = 'cadastroUsuario';

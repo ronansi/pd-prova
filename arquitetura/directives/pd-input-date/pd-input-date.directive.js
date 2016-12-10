@@ -12,12 +12,12 @@
             controllerAs: 'vm',
             link: link,
             restrict: 'E',
+            templateUrl: 'arquitetura/directives/pd-input-date/pd-input-date.html',
             scope: {
                 label: '@',
                 placeholder: '@',
                 ngModel: '=',
                 colspan: "@",
-                tipo: '@',
                 formato: '@'
             }
         };
@@ -30,15 +30,13 @@
         }
     }
 
-    ControllerName.$inject = [];
-
     /* @ngInject */
     function ControllerName() {
 
         var vm = this;
 
         this.abrirPopup = function(){
-            vm.popup.opened = true;
+            vm.popupOpened = true;
         }
 
     }

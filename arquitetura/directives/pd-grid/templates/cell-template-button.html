@@ -1,0 +1,13 @@
+<div class="ui-grid-cell-contents">
+    <button class="btn btn-danger btn-xs"
+            ng-click="grid.appScope.service.excluir(row.entity.id); grid.appScope.atualizarLista()"
+            ng-if="grid.appScope.showButtonDelete !== false">
+        <i class="fa fa-trash"></i>
+    </button>
+
+    <button class="btn btn-warning btn-xs"
+            ng-click="grid.appScope.editar(row.entity)"
+            ng-if="grid.appScope.showButtonEdit !== false">
+        <i class="fa fa-pencil"></i>
+    </button>
+</div>

@@ -1,0 +1,29 @@
+<div ng-controller="CadastroProdutoController as vm">
+    <pd-crud service="vm.service" titulo="{{vm.title}}">
+        <div class="row">
+            <pd-input-text
+                    label="Código"
+                    ng-model="vm.service.entidade.codigo"
+                    colspan="2"
+                    mask="99999">
+            </pd-input-text>
+
+            <pd-input-text
+                    label="Nome"
+                    ng-model="vm.service.entidade.nome"
+                    colspan="4">
+            </pd-input-text>
+
+            <pd-select label="Tipo de usuário"
+                       ng-model="vm.service.entidade.unidadeMedida"
+                       provider="vm.unidadeMedida">
+            </pd-select>
+
+            <pd-checkbox
+                    label="Ativo"
+                    ng-model="vm.service.entidade.ativo">
+            </pd-checkbox>
+
+        </div>
+    </pd-crud>
+</div>

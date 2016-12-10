@@ -1,0 +1,26 @@
+<div ng-controller="LoginController as vm" style="max-width: 300px; width: 100%; margin: 0 auto">
+    <pd-panel>
+
+        <pd-panel-header>
+            <i class="fa fa-sign-in"></i>
+            <span ng-bind="vm.title" style="font-weight: bold"></span>
+        </pd-panel-header>
+
+        <pd-panel-body>
+            <div class="row">
+                <pd-input-text ng-model="vm.login" placeholder="Login" colspan="12"></pd-input-text>
+            </div>
+            <div class="row">
+                <pd-input-text ng-model="vm.senha" placeholder="Senha" tipo="password" colspan="12"></pd-input-text>
+            </div>
+        </pd-panel-body>
+
+        <pd-panel-footer>
+            <button class="btn btn-primary" ng-click="vm.logar(vm.login, vm.senha)">
+                <i class="fa fa-sign-in"></i>
+                Logar
+            </button>
+        </pd-panel-footer>
+
+    </pd-panel>
+</div>

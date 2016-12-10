@@ -9,7 +9,11 @@
         'ui.router',
         'oc.lazyLoad',
         'pdAppArquitetura',
-        'ui.bootstrap'
+        'ngTouch',
+        'ui.bootstrap',
+        'ui.bootstrap.tpls',
+        'ui.mask',
+        'LocalStorageModule'
     ]);
 
 })();

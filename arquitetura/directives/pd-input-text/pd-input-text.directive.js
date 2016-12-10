@@ -15,7 +15,8 @@
                 placeholder: '@',
                 ngModel: '=',
                 colspan: "@",
-                tipo: '@'
+                tipo: '@',
+                mask: '@'
             }
         };
 

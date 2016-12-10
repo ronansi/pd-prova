@@ -1,9 +1,9 @@
 <div ng-class="classColspan">
     <div class="form-group">
-        <label class="control-label" for="{{idInputDate}}" ng-bind="label"></label>
+        <label class="control-label" for="{{vm.idInputDate}}" ng-bind="vm.label"></label>
 
         <p class="input-group">
-            <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" is-open="vm.popup.opened" ng-model="ngModel" close-text="Fechar" id="{{idInputDate}}"/>
+            <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" is-open="vm.popupOpened" ng-model="vm.ngModel" close-text="Fechar" id="{{vm.idInputDate}}"/>
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="vm.abrirPopup()"><i class="fa fa-calendar"></i></button>
             </span>

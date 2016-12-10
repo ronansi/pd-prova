@@ -4,20 +4,27 @@
             <pd-input-text
                     label="Código"
                     ng-model="vm.service.entidade.codigo"
-                    colspan="2">
+                    colspan="2"
+                    mask="99999">
             </pd-input-text>
 
             <pd-input-text
                     label="Nome"
                     ng-model="vm.service.entidade.nome"
-                    colspan="5">
+                    colspan="4">
             </pd-input-text>
 
             <pd-input-text
                     label="E-mail"
                     ng-model="vm.service.entidade.email"
-                    colspan="5">
+                    colspan="3">
             </pd-input-text>
+
+            <pd-select label="Tipo de usuário"
+                       ng-model="vm.service.entidade.tipoUsuario"
+                       provider="vm.tipoUsuario"
+                       ng-required="true">
+            </pd-select>
         </div>
         <div class="row">
             <pd-input-text
@@ -33,15 +40,15 @@
 
             <pd-input-text
                     label="Confirmar senha"
-                    ng-model="vm.service.entidade.senha"
+                    ng-model="vm.confirmarSenha"
                     tipo="password">
             </pd-input-text>
 
-            <pd-select label="Tipo de usuário"
-                       ng-model="vm.service.entidade.tipoUsuario"
-                       provider="vm.tipoUsuario"
-                       ng-required="true">
-            </pd-select>
+            <pd-input-date label="Data"
+                           ng-model="vm.service.entidade.validadeSenha"
+                           formato="dd/MM/yyyy"
+                           placeholder="dd/MM/yyyy">
+            </pd-input-date>
         </div>
     </pd-crud>
 </div>
