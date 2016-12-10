@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- CSS PLUGINS -->
+    <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.min.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+
+    <!-- JS PLUGINS -->
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+    <script src="node_modules/angular-toastr/dist/angular-toastr.min.js"></script>
+    <script src="node_modules/angular-ui-grid/ui-grid.min.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="node_modules/oclazyload/dist/ocLazyLoad.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- JS ARQUITETURA -->
+    <script src="app/config/pd-app.js"></script>
+    <script src="app/config/pd-rotas-config.js"></script>
+    <script src="arquitetura/services/alert.service.js"></script>
+    <script src="arquitetura/services/pd-service.service.js"></script>
+    <script src="arquitetura/directives/pd-panel/pd-panel.directive.js"></script>
+    <script src="arquitetura/directives/pd-crud/pd-crud.directive.js"></script>
+    <script src="arquitetura/directives/pd-input-text/pd-input-text.directive.js"></script>
+    <script src="arquitetura/directives/pd-select/pd-select.directive.js"></script>
+
+    <!-- JS PAGINA -->
+    <script src="app/controller/index.controller.js"></script>
+
+</head>
+<body ng-app="pdApp" class="container" ng-controller="IndexController as indexController">
+
+    <div>
+        <ui-view></ui-view>
+    </div>
+
+</body>
+</html>

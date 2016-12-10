@@ -1,0 +1,35 @@
+<div>
+    <form novalidate name="{{formName}}" autocomplete="off">
+        <pd-panel>
+            <pd-panel-header>
+                <i class="fa fa-edit"></i>
+                <span ng-bind="titulo" style="font-weight: bold"></span>
+                <button class="btn btn-info btn-xs pull-right">
+                    <i class="fa fa-info-circle"></i>
+                </button>
+            </pd-panel-header>
+
+            <pd-panel-body>
+                <ng-transclude></ng-transclude>
+            </pd-panel-body>
+
+            <pd-panel-footer>
+                <button class="btn btn-primary navbar-btn" ng-click="service.salvar()">
+                    <i class="fa fa-floppy-o"></i>
+                    Salvar
+                </button>
+                <button class="btn btn-warning navbar-btn" ng-click="service.limpar()">
+                    <i class="fa fa-eraser"></i>
+                    Limpar
+                </button>
+
+                <a ui-sref="{{service.rotaPesquisar}}">
+                    <button class="btn btn-default">
+                        <i class="fa fa-arrow-left"></i>
+                        Pesquisar
+                    </button>
+                </a>
+            </pd-panel-footer>
+        </pd-panel>
+    </form>
+</div>

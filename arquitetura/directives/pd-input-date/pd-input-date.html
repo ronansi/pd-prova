@@ -1,0 +1,12 @@
+<div ng-class="classColspan">
+    <div class="form-group">
+        <label class="control-label" for="{{idInputDate}}" ng-bind="label"></label>
+
+        <p class="input-group">
+            <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" is-open="vm.popup.opened" ng-model="ngModel" close-text="Fechar" id="{{idInputDate}}"/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="vm.abrirPopup()"><i class="fa fa-calendar"></i></button>
+            </span>
+        </p>
+    </div>
+</div>

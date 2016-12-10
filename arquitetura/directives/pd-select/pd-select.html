@@ -1,0 +1,15 @@
+<div ng-class="colspan">
+    <div class="form-group">
+
+        <label class="control-label"
+               for="{{idInputSelect}}"
+               ng-bind="label">
+        </label>
+
+        <select class="form-control"
+                id="{{idInputSelect}}"
+                ng-model="ngModel"
+                ng-options="item[propriedadeValor] as item[propriedadeDescricao] for item in provider">
+        </select>
+    </div>
+</div>

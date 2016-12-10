@@ -1,0 +1,13 @@
+<div class="pd-crud panel" style="margin-top: 30px" ng-class="classePanel">
+    <div class="panel-heading">
+       <div ng-transclude="header"></div>
+    </div>
+
+    <div class="panel-body">
+        <div ng-transclude="body"></div>
+    </div>
+
+    <div class="panel-footer" ng-if="showFooter !== false">
+        <div ng-transclude="footer"></div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div ng-controller="PesquisaUsuarioController as vm">
+    <pd-panel>
+
+        <pd-panel-header>
+            <i class="fa fa-edit"></i>
+            <span ng-bind="vm.title" style="font-weight: bold"></span>
+            <button class="btn btn-info btn-xs pull-right">
+                <i class="fa fa-info-circle"></i>
+            </button>
+        </pd-panel-header>
+
+        <pd-panel-body>
+            <div class="row">
+                Teste
+            </div>
+        </pd-panel-body>
+
+        <pd-panel-footer>
+            <button class="btn btn-primary" ng-click="indexController.abrirPagina(vm.service.rotaCadastrar)">
+                <i class="fa fa-file-text-o"></i>
+                Novo
+            </button>
+        </pd-panel-footer>
+
+    </pd-panel>
+</div>
