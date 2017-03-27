@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
     'use strict';
 
     angular
@@ -26,6 +26,8 @@
                     break;
                 }
             }
+		
+		//Teste do ronan
 
             if(usuarioLogado){
                 localStorageService.set("usuarioLogado", usuarioLogado);
